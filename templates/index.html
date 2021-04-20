@@ -1,0 +1,89 @@
+
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Online admission</title>
+   {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+
+
+</head>
+
+<body>
+    {% block content %}
+     {% endblock %}
+    <div class="full-page">
+        <div class="navbar">
+            <div>
+                <a href='index.html'>Online admission</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'admission' %}">Admission form</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto;">Login/register</button></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div id='login-form' class='login-page'>
+            <form method="POST" action="{% url 'home' %}"></form>
+             {% csrf_token %}
+             <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button' onclick='login()' class='toggle-btn'>Log In</button>
+                    <button type='button' onclick='register()' class='toggle-btn'>Register</button>
+                </div>
+                <form id='login' class='input-group-login'>
+                    <input type='text' class='input-field' placeholder='Email Id' name='email' required>
+                    <input type='password' class='input-field' placeholder='Enter Password' required>
+                    <input type='checkbox' class='check-box'><span>Remember Password</span>
+                    <button type='submit' class='submit-btn'>Log in</button>
+                </form>
+                <form id='register' class='input-group-register' form method="POST" action="index.html">
+                    <input type='text' class='input-field' placeholder='Name' name='name' required>
+
+                    <input type='email' class='input-field' placeholder='Email Id' name='email' required>
+                    <input type='password' class='input-field' placeholder='Enter Password' required>
+                    <input type='password' class='input-field' placeholder='Confirm Password' required>
+                    <input type='checkbox' class='check-box'><span>I agree to the terms and conditions</span>                                                 conditions</span>
+                    <button type='submit' class='submit-btn'>Register</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var x = document.getElementById('login');
+        var y = document.getElementById('register');
+        var z = document.getElementById('btn');
+
+        function register() {
+            x.style.left = '-400px';
+            y.style.left = '50px';
+            z.style.left = '0px';
+        }
+
+        function login() {
+            x.style.left = '50px';
+            y.style.left = '450px';
+            z.style.left = '110px';
+        }
+    </script>
+    <script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

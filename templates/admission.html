@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<h3>Admission form</h3>
+
+<div class="container">
+  <form action="{% url 'home' %}" method="POST">
+      {% csrf_token %}
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name..">
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+    <label for="dob">Date of birth:</label>
+    <input type="date" id="dob" name="dob">
+
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+
+
+     <label>Applied for:</label>
+      <select>
+          <option value="Applied for">Applied for</option>
+      <option value="B.Sc">B.Sc</option><option value="BBA">BBA</option>
+     <option value="M.Sc">M.Sc</option>
+     <option value="MBA">MBA</option>
+     <option value="M.pharm">M.pharm</option>
+     <option value="Law & Humanities">Law & Humanities</option>
+     </select>
+
+
+      <label>Gender:</label>
+      <select>
+     <option value="Male">Male</option>
+     <option value="Female">Female</option>
+     <option value="Other">Other</option>
+
+     </select>
+
+
+     <label>Phone :</label>
+      <input type="text" name="country code"  value="+880" size="2"/>
+
+      Address<br><textarea cols="80" rows="5" value="address">
+      </textarea>
+
+      <label for="city"><b>City</b></label>
+      <input type="text" placeholder="Enter City" name="city" id="city" required>
+
+
+      <input type="submit" value="Submit">
+
+  </form>
+</div>
+
+</body>
+</html>
